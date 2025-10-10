@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Cats {
+public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long catId;
