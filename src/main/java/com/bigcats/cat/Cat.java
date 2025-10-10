@@ -18,80 +18,67 @@ public class Cat {
     @Column(nullable = false)
     private String description;
 
-
     @Column(nullable = false)
     private String breed;
 
     @Column(nullable = false)
     private int age;
-    
-    private String profilePicturePath;
 
-  public Cat() {
-  }
+    public Cat() {
+    }
 
-  public Cat(Long catId, String name, String description, String breed, int age, String profilePicturePath) {
-    this.catId = catId;
-    this.name = name;
-    this.description = description;
-    this.breed = breed;
-    this.age = age;
-    this.profilePicturePath = profilePicturePath;
-  }
+    public Cat(Long catId, String name, String description, String breed, int age) {
+        this.catId = catId;
+        this.name = name;
+        this.description = description;
+        this.breed = breed;
+        this.age = age;
+    }
 
-  public Cat(String name, String description, String breed, int age, String profilePicturePath) {
-    this.name = name;
-    this.description = description;
-    this.breed = breed;
-    this.age = age;
-    this.profilePicturePath = profilePicturePath;
-  }
+    public Cat(String name, String description, String breed, int age) {
+        this.name = name;
+        this.description = description;
+        this.breed = breed;
+        this.age = age;
+    }
 
-  public Long getCatId() {
-    return catId;
-  }
+    public Long getCatId() {
+        return catId;
+    }
 
-  public void setCatId(Long id) {
-    this.catId = id;
-  }
+    public void setCatId(Long id) {
+        this.catId = id;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-  public String getBreed() {
-    return breed;
-  }
+    public String getBreed() {
+        return breed;
+    }
 
-  public void setBreed(String breed) {
-    this.breed = breed;
-  }
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
 
-  public int getAge() {
-    return age;
-  }
+    public int getAge() {
+        return age;
+    }
 
-  public void setAge(int age) {
-    this.age = age;
-  }
-
-  public String getProfilePicturePath() {
-    return profilePicturePath;
-  }
-
-  public void setProfilePicturePath(String profilePicturePath) {
-    this.profilePicturePath = profilePicturePath;
-  }
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
