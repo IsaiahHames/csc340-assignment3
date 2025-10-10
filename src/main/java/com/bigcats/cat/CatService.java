@@ -16,91 +16,91 @@ public class CatService {
   private CatRepository catRepository;
 
   /**
-   * Method to get all students
+   * Method to get all cats
    *
-   * @return List of all students
+   * @return List of all cats
    */
   public Object getAllCats() {
     return catRepository.findAll();
   }
 
   /**
-   * Method to get a student by ID
+   * Method to get a cat by ID
    *
-   * @param studentId The ID of the student to retrieve
-   * @return The student with the specified ID
+   * @param catId The ID of the cat to retrieve
+   * @return The cat with the specified ID
    */
   public Cat getCatById(@PathVariable long catId) {
     return catRepository.findById(catId).orElse(null);
   }
 
   /**
-   * Method to get students by name
+   * Method to get cats by name
    *
-   * @param name The name of the student to search for
-   * @return List of students with the specified name
+   * @param name The name of the cat to search for
+   * @return List of cats with the specified name
    */
   public Object getCatsByName(String name) {
     return catRepository.getCatsByName(name);
   }
 
   /**
-   * Method to get students by major
+   * Method to get cats by breed
    *
-   * @param major The major to search for
-   * @return List of students with the specified major
+   * @param breed The breed to search for
+   * @return List of cats with the specified breed
    */
   public Object getCatsByBreed(String breed) {
     return catRepository.getCatsByBreed(breed);
   }
 
   /**
-   * Fetch all students with a GPA above a threshold.
+   * Fetch all cats with a age above a threshold.
    *
-   * @param gpa the threshold
-   * @return the list of matching Students
+   * @param age the threshold
+   * @return the list of matching cats
    */
   public Object getCatsByAge(int age) {
     return catRepository.getCatsByAge(age);
   }
 
   /**
-   * Method to add a new student
+   * Method to add a new cat
    *
-   * @param student The student to add
+   * @param cat The cat to add
    */
   public Cat addCat(Cat cat) {
     return catRepository.save(cat);
   }
 
   /**
-   * Method to update a student
+   * Method to update a cat
    *
-   * @param studentId The ID of the student to update
-   * @param student   The updated student information
+   * @param catId The ID of the cat to update
+   * @param cat   The updated cat information
    */
   public Cat updateCat(Long catId, Cat cat) {
     return catRepository.save(cat);
   }
 
   /**
-   * Method to delete a student
+   * Method to delete a cat
    *
-   * @param studentId The ID of the student to delete
+   * @param catId The ID of the cat to delete
    */
   public void deleteCat(Long catId) {
     catRepository.deleteById(catId);
   }
 
   /**
-   * Method to write a student object to a JSON file
+   * Method to write a cat object to a JSON file
    *
-   * @param student The student object to write
+   * @param cat The cat object to write
    */
   public String writeJson(Cat cat) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
-      objectMapper.writeValue(new File("students.json"), cat);
+      objectMapper.writeValue(new File("cats.json"), cat);
       return "Cat written to JSON file successfully";
     } catch (IOException e) {
       e.printStackTrace();
@@ -110,9 +110,9 @@ public class CatService {
   }
 
   /**
-   * Method to read a student object from a JSON file
+   * Method to read a cat object from a JSON file
    *
-   * @return The student object read from the JSON file
+   * @return The cat object read from the JSON file
    */
   public Object readJson() {
     ObjectMapper objectMapper = new ObjectMapper();
