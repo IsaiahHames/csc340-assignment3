@@ -1,4 +1,4 @@
-package com.bigcats.assignemtn;
+package com.bigcats;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
