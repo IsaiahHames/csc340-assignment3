@@ -137,7 +137,7 @@ Gets a list of cats for a named breed.
   }
 ]
 ```
-5. ### [`/age`](http://localhost:8080/cats/age?gpa=30) (GET)
+5. ### [`/age`](http://localhost:8080/cats/age?age=30) (GET)
 Gets a list of cats with a Age meeting the Threshold.
 
 #### Parameters
