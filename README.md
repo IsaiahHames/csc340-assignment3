@@ -8,7 +8,7 @@ Simple CRUD API for Student Objects with JPA (Hibernate)
 - Get the project
     - clone
         ```
-      git clone https://github.com/csc340-uncg/f25-jpa-crud-api.git
+      git clone https://github.com/IsaiahHames/csc340-assignment3.git
         ```
     - OR download zip.
 - Open the project in VS Code.
