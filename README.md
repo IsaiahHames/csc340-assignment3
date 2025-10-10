@@ -1,4 +1,4 @@
-# csc340-assignement3
+# csc340-assignment3
 Simple CRUD API for Cat Objects with JPA (Hibernate)
 
 ### Version
