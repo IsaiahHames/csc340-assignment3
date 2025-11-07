@@ -1,5 +1,7 @@
 package com.bigcats.cat;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,22 +28,31 @@ public class Cat {
     @Column(nullable = false)
     private int age;
 
+    private String imagepath;
+
+    @Column(nullable = false)
+    private LocalDate dob;
+
     public Cat() {
     }
 
-    public Cat(Long catId, String name, String description, String breed, int age) {
+    public Cat(Long catId, String name, String description, String breed, int age, String imagepath, LocalDate dob) {
         this.catId = catId;
         this.name = name;
         this.description = description;
         this.breed = breed;
         this.age = age;
+        this.imagepath = imagepath;
+        this.dob = dob;
     }
 
-    public Cat(String name, String description, String breed, int age) {
+    public Cat(String name, String description, String breed, int age, String imagepath, LocalDate dob) {
         this.name = name;
         this.description = description;
         this.breed = breed;
         this.age = age;
+        this.imagepath = imagepath;
+        this.dob = dob;
     }
 
     public Long getCatId() {
@@ -82,5 +93,21 @@ public class Cat {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getImagepath() {
+        return imagepath;
+    }
+
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 }
