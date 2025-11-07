@@ -1,19 +1,23 @@
 package com.bigcats.cat;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CatService {
     
     @Autowired
   private CatRepository catRepository;
+
+  private static final String UPLOAD_DIR = "src/main/resources/static/pictures/";
 
   /**
    * Method to get all cats
@@ -69,8 +73,28 @@ public class CatService {
    *
    * @param cat The cat to add
    */
-  public Cat addCat(Cat cat) {
-    return catRepository.save(cat);
+  public Cat addCat(Cat cat, MultipartFile picture) {
+    Cat newCat = catRepository.save(cat);
+    String originalFileName = picture.getOriginalFilename();
+
+    try {
+      if (originalFileName != null && originalFileName.contains(".")) {
+        String fileExtension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+        String fileName = String.valueOf(newCat.getCatId()) + "." + fileExtension;
+        Path filePath = Paths.get(UPLOAD_DIR + fileName);
+
+        InputStream inputStream = picture.getInputStream();
+
+        Files.createDirectories(Paths.get(UPLOAD_DIR));// Ensure directory exists
+        Files.copy(inputStream, filePath,
+            StandardCopyOption.REPLACE_EXISTING);// Save picture file
+        newCat.setImagePath(fileName);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return catRepository.save(newCat);
   }
 
   /**
@@ -90,38 +114,5 @@ public class CatService {
    */
   public void deleteCat(Long catId) {
     catRepository.deleteById(catId);
-  }
-
-  /**
-   * Method to write a cat object to a JSON file
-   *
-   * @param cat The cat object to write
-   */
-  public String writeJson(Cat cat) {
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      objectMapper.writeValue(new File("cats.json"), cat);
-      return "Cat written to JSON file successfully";
-    } catch (IOException e) {
-      e.printStackTrace();
-      return "Error writing cat to JSON file";
-    }
-
-  }
-
-  /**
-   * Method to read a cat object from a JSON file
-   *
-   * @return The cat object read from the JSON file
-   */
-  public Object readJson() {
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      return objectMapper.readValue(new File("cats.json"), Cat.class);
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null;
-    }
-
   }
 }

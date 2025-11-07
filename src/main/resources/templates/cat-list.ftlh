@@ -10,10 +10,10 @@
     <header>
         <h2>BigCats</h2>
         <ul>
-            <a href="index.html"><li>Home</li></a>
+            <a href="/cats"><li>Home</li></a>
             <a href="details.html"><li>Details</li></a>
             <a href="about.html"><li>About</li></a>
-            <a href="new-animal-form.html"><li>Add Animal</li></a>
+            <a href="/cats/createForm"><li>Add Animal</li></a>
         </ul>
     </header>
 
@@ -25,43 +25,14 @@
     </form>
 
     <div id="card_stack">
+        <#list catsList as cat>
         <div class="cards">
-            <img src="/pictures/lion.jpg" alt="" class="animal">
-            <h3>Simba</h3>
-            <p>Lion</p>
-            <a href="details.html"><button>View Details</button></a>
+            <img src="/pictures/${cat.imagepath}" alt="" class="animal">
+            <h3>${cat.name}</h3>
+            <p>${cat.breed}</p>
+            <a href="/cats/${cat.catId?c}"><button>View Details</button></a>
         </div>
-        <div class="cards">
-            <img src="/pictures/tiger.webp" alt="" class="animal">
-            <h3>Tigger</h3>
-            <p>Tiger</p>
-            <a href="details.html"><button>View Details</button></a>
-        </div>
-        <div class="cards">
-            <img src="/pictures/leopard.jpg" alt="" class="animal">
-            <h3>Sabor</h3>
-            <p>Leopard</p>
-            <a href="details.html"><button>View Details</button></a>
-        </div>
-        <div class="cards">
-            <img src="/pictures/jaguar.avif" alt="" class="animal">
-            <h3>Jade</h3>
-            <p>Jaguar</p>
-            <a href="details.html"><button>View Details</button></a>
-        </div>
-        <div class="cards">
-            <img src="/pictures/mountain_lion.jpeg" alt="" class="animal">
-            <h3>Louie</h3>
-            <p>Mountain Lion</p>
-            <a href="details.html"><button>View Details</button></a>
-        </div>
-        <div class="cards">
-            <img src="/pictures/bobcat.jpg" alt="" class="animal">
-            <h3>Bonkers</h3>
-            <p>Bobcat</p>
-
-            <a href="details.html"><button>View Details</button></a>
-        </div>
+        </#list>
     </div>
 </body>
 </html>

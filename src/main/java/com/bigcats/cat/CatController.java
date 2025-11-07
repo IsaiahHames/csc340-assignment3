@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class CatController {
@@ -24,6 +25,7 @@ public class CatController {
      */
     @GetMapping({"/cats", "/cats/"})
     public Object getAllCats(Model model) {
+        model.addAttribute("catsList", catService.getAllCats());
         return "cat-list";
     }
 
@@ -100,8 +102,8 @@ public class CatController {
      * @return List of all cats
      */
     @PostMapping("/cats")
-    public Object addCat(Cat cat) {
-        Cat newCat = catService.addCat(cat);
+    public Object addCat(Cat cat, @RequestParam MultipartFile picture) {
+        Cat newCat = catService.addCat(cat, picture);
         return "redirect:/cats/" + newCat.getCatId();
     }
 
