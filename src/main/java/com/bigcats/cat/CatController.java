@@ -35,7 +35,8 @@ public class CatController {
      */
     @GetMapping("/cats/{id}")
     public String getcatById(@PathVariable long id, Model model) {
-        return "cat-detail";
+        model.addAttribute("cat", catService.getCatById(id));
+        return "cat-details";
     }
 
     /**
