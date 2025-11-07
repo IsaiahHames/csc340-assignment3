@@ -36,8 +36,8 @@ public class Cat {
     public Cat() {
     }
 
-    public Cat(Long catId, String name, String description, String breed, int age, String imagepath, LocalDate dob) {
-        this.catId = catId;
+    public Cat(Long id, String name, String description, String breed, int age, String imagepath, LocalDate dob) {
+        this.catId = id;
         this.name = name;
         this.description = description;
         this.breed = breed;
@@ -99,7 +99,7 @@ public class Cat {
         return imagepath;
     }
 
-    public void setImagepath(String imagepath) {
+    public void setImagePath(String imagepath) {
         this.imagepath = imagepath;
     }
 
