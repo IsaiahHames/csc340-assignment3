@@ -17,24 +17,27 @@
         </ul>
     </header>
 
-    <h1>Add New Animal</h1>
-    <form action="">
+    <h1>${title}</h1>
+    <form action="/cats" method="post" enctype="multipart/form-data">
         <label for="">Name</label>
-        <input type="text" name="Name" id="Name" placeholder="Enter animal name">
+        <input type="text" name="name" id="name" placeholder="Enter animal name"/>
 
         <label for="">Breed</label>
-        <input type="text" name="Breed" id="Breed" placeholder="Enter breed">
+        <input type="text" name="breed" id="breed" placeholder="Enter breed"/>
 
         <label for="">Date of birth</label>
-        <input type="date" name="Date of Birth" id="DOB">
+        <input type="date" name="dob" id="dob"/>
+
+        <label for="">Age</label>
+        <input type="number" name="age" id="age" placeholder="Enter age"/>
 
         <label for="">Image URL</label>
-        <input type="file" name="Image URL" id="Image">
+        <input type="file" name="picture" id="picture" required/>
 
         <label for="">Description</label>
-        <textarea name="Description" id="description" cols="86" rows="5" placeholder="Describe the animal"></textarea>
+        <input type="text" name="description" id="description" placeholder="Describe the animal"/>
 
-        <input type="submit" value="Add Animal">
+        <button type="submit">Add Animal</button>
     </form>
 </body>
 </html>

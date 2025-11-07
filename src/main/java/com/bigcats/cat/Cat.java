@@ -19,25 +19,23 @@ public class Cat {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+
     private String description;
 
     @Column(nullable = false)
     private String breed;
 
-    @Column(nullable = false)
     private int age;
 
     private String imagepath;
 
-    @Column(nullable = false)
     private LocalDate dob;
 
     public Cat() {
     }
 
-    public Cat(Long id, String name, String description, String breed, int age, String imagepath, LocalDate dob) {
-        this.catId = id;
+    public Cat(Long catId, String name, String description, String breed, int age, String imagepath, LocalDate dob) {
+        this.catId = catId;
         this.name = name;
         this.description = description;
         this.breed = breed;
