@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BigCats Create</title>
     <link rel="stylesheet" href="/css/cat-create.css">
 </head>
 <body>
@@ -11,8 +11,6 @@
         <h2>BigCats</h2>
         <ul>
             <a href="/cats"><li>Home</li></a>
-            <a href="details.html"><li>Details</li></a>
-            <a href="about.html"><li>About</li></a>
             <a href="/cats/createForm"><li>Add Animal</li></a>
         </ul>
     </header>

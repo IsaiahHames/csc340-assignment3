@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BigCats Details</title>
     <link rel="stylesheet" href="/css/cat-details.css">
 </head>
 <body>
@@ -11,8 +11,6 @@
         <h2>BigCats</h2>
         <ul>
             <a href="/cats"><li>Home</li></a>
-            <a href="details.html"><li>Details</li></a>
-            <a href="about.html"><li>About</li></a>
             <a href="/cats/createForm"><li>Add Animal</li></a>
         </ul>
     </header>
@@ -20,14 +18,15 @@
     <h1>${cat.name}</h1>
 
     <div>
-        <img src="/pictures/${cat.imagepath}" alt="">
+        <img src="/pictures/${(cat.imagepath)!'basecat.png'}" alt="">
         <h3>Description:</h3>
         <p>${cat.description}</p>
         <p>Breed: ${cat.breed}</p>
         <p>Date of Birth: ${cat.dob}</p>
+        <p>Age: ${cat.age}</p>
 
-        <button id="edit">Edit</button>
-        <button id="remove">Remove</button>
+        <a href="/cats/updateForm/${cat.catId?c}"><button id="edit">Edit</button></a>
+        <a href="/cats/delete/${cat.catId?c}"><button id="remove">Remove</button></a>
     </div>
     
 </body>

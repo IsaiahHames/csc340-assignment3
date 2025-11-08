@@ -3,12 +3,9 @@ package com.bigcats.cat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -130,11 +127,11 @@ public class CatController {
      * @param cat The updated cat information
      * @return The updated cat
      */
-    @PutMapping("/cats/update/{id}")
-    public Object updateCat(@PathVariable Long id, @RequestBody Cat cat) {
-        catService.updateCat(id, cat);
-        return "redirect:/cats/" + id;
-    }
+    @PostMapping("/cats/update/{id}")
+    public Object updateCat(@PathVariable Long id, Cat cat, @RequestParam MultipartFile picture) {
+    catService.updateCat(id, cat, picture);
+    return "redirect:/cats/" + id;
+  }
 
     /**
      * Endpoint to delete a cat
@@ -142,7 +139,7 @@ public class CatController {
      * @param id The ID of the cat to delete
      * @return List of all cats
      */
-    @DeleteMapping("/cats/{id}")
+    @GetMapping("/cats/delete/{id}")
     public Object deleteCat(@PathVariable Long id) {
         catService.deleteCat(id);
         return "redirect:/cats";

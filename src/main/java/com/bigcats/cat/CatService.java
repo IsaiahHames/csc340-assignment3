@@ -103,7 +103,24 @@ public class CatService {
    * @param catId The ID of the cat to update
    * @param cat   The updated cat information
    */
-  public Cat updateCat(Long catId, Cat cat) {
+  public Cat updateCat(Long catId, Cat cat, MultipartFile picture) {
+    String originalFileName = picture.getOriginalFilename();
+
+    try {
+      if (originalFileName != null && originalFileName.contains(".")) {
+        String fileExtension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+        String fileName = String.valueOf(catId) + "." + fileExtension;
+        Path filePath = Paths.get(UPLOAD_DIR + fileName);
+
+        InputStream inputStream = picture.getInputStream();
+        Files.deleteIfExists(filePath);
+        Files.copy(inputStream, filePath,
+            StandardCopyOption.REPLACE_EXISTING);// Save picture file
+        cat.setImagePath(fileName);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     return catRepository.save(cat);
   }
 
